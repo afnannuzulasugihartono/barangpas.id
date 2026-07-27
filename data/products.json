@@ -1,0 +1,26 @@
+[
+  {
+    "id": "001",
+    "title": "Stand iPhone Aluminium MagSafe",
+    "category": "Gadget",
+    "platform": "shopee",
+    "image": "",
+    "url": "https://shope.ee/samplelink001"
+  },
+  {
+    "id": "002",
+    "title": "Hold Phone Pen Holder Desk Setup",
+    "category": "Setup Meja",
+    "platform": "tiktok",
+    "image": "",
+    "url": "https://vt.tiktok.com/samplelink002"
+  },
+  {
+    "id": "003",
+    "title": "Kabel Type-C Braided 1m",
+    "category": "Aksesori",
+    "platform": "lazada",
+    "image": "",
+    "url": "https://lazada.co.id/samplelink003"
+  }
+]
