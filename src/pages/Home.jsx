@@ -61,7 +61,7 @@ export default function Home() {
 
       <main className="max-w-5xl mx-auto px-4">
         {/* Category quick links */}
-        <section className="relative z-10 py-4 mb-6">
+        <section className="relative z-10 py-4 mb-6 text-left">
           {loading ? null : <CategoryPills categories={categories} />}
         </section>
 

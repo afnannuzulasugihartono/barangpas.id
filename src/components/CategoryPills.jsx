@@ -4,7 +4,7 @@ export default function CategoryPills({ categories }) {
   const { slug } = useParams();
 
   return (
-    <div className="flex gap-2 overflow-x-auto py-2 px-1 no-scrollbar">
+    <div className="flex items-center justify-start gap-2 overflow-x-auto py-2 px-1 no-scrollbar w-full text-left">
       <Link
         to="/"
         className={`shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all shadow-sm ${
