@@ -7,6 +7,7 @@ import CategoryPills from '../components/CategoryPills';
 import ProductGrid from '../components/ProductGrid';
 import Loading from '../components/Loading';
 import ErrorState from '../components/ErrorState';
+import CuratorSeal from '../components/CuratorSeal';
 
 export default function Home() {
   const [categories, setCategories] = useState([]);
@@ -43,23 +44,30 @@ export default function Home() {
       <Header />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#FFE4EC] to-[#FFFAFC] pt-8 pb-10 px-4">
-        <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#FFD1E3] blur-2xl opacity-70" />
-        <div className="absolute top-20 -left-10 w-32 h-32 rounded-full bg-[#FFB6D0] blur-2xl opacity-50" />
-        <div className="max-w-5xl mx-auto relative text-center">
-          <span className="inline-flex items-center gap-1 bg-white/80 text-[#FF6FA5] text-xs font-bold px-3 py-1.5 rounded-full shadow-sm mb-4">
-            <Sparkles className="w-3.5 h-3.5" /> Dari Instagram, langsung ke sini!
-          </span>
-          <h1 className="font-heading text-3xl sm:text-5xl leading-tight text-[#2D2D2D]">
-            Semua barang <span className="text-[#FF6FA5]">pas</span> di satu tempat
-          </h1>
-          <p className="mt-3 text-[#8A6373] text-sm sm:text-base max-w-md mx-auto">
-            Klik, temukan, dan beli langsung dari Shopee, TikTok Shop, Tokopedia, atau Lazada favoritmu.
-          </p>
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#FFE4EC] to-[#FFFAFC] pt-10 pb-14 md:pt-16 md:pb-20 px-4">
+        <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#FFD1E3] blur-2xl opacity-70" aria-hidden="true" />
+        <div className="absolute top-20 -left-10 w-32 h-32 rounded-full bg-[#FFB6D0] blur-2xl opacity-50" aria-hidden="true" />
+
+        <div className="max-w-6xl mx-auto relative grid md:grid-cols-[1fr_auto] items-center gap-8">
+          <div className="text-center md:text-left">
+            <span className="inline-flex items-center gap-1 bg-white/80 text-[#FF6FA5] text-xs font-bold px-3 py-1.5 rounded-full shadow-sm mb-4">
+              <Sparkles className="w-3.5 h-3.5" /> Dari Instagram, langsung ke sini!
+            </span>
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl leading-tight text-[#2D2D2D] max-w-xl mx-auto md:mx-0">
+              Semua barang <span className="text-[#FF6FA5]">pas</span> di satu tempat
+            </h1>
+            <p className="mt-4 text-[#8A6373] text-sm sm:text-base max-w-md mx-auto md:mx-0">
+              Kami menyaring ribuan produk dari Shopee, TikTok Shop, Tokopedia, dan Lazada — supaya kamu nggak salah beli.
+            </p>
+          </div>
+
+          <div className="hidden md:flex justify-end pr-4">
+            <CuratorSeal size="lg" className="-rotate-6" />
+          </div>
         </div>
       </section>
 
-      <main className="max-w-5xl mx-auto px-4">
+      <main className="max-w-6xl mx-auto px-4">
         {/* Category quick links */}
         <section className="-mt-4 mb-8">
           {loading ? null : <CategoryPills categories={categories} />}
@@ -71,7 +79,7 @@ export default function Home() {
         {!loading && !error && (
           <>
             {featured.length > 0 && (
-              <section id="featured" className="mb-10">
+              <section id="featured" className="mb-10 scroll-mt-20">
                 <div className="flex items-center justify-between mb-3">
                   <h2 className="font-heading text-xl sm:text-2xl text-[#2D2D2D] flex items-center gap-1.5">
                     <Sparkles className="w-5 h-5 text-[#FF6FA5]" /> Pilihan Spesial
@@ -84,7 +92,7 @@ export default function Home() {
             <section className="mb-10">
               <div className="flex items-center justify-between mb-3">
                 <h2 className="font-heading text-xl sm:text-2xl text-[#2D2D2D]">Semua Produk</h2>
-                <Link to="/kategori/kosmetik" className="text-xs font-semibold text-[#FF6FA5] flex items-center gap-1">
+                <Link to="/kategori/kecantikan" className="text-xs font-semibold text-[#FF6FA5] flex items-center gap-1 hover:gap-1.5 transition-all">
                   Lihat Semua <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

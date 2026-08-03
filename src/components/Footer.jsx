@@ -1,20 +1,24 @@
 import { Instagram, MessageCircle } from 'lucide-react';
 import Logo from './Logo';
+import CuratorSeal from './CuratorSeal';
 
 export default function Footer() {
   return (
     <footer className="bg-[#FFF3F7] border-t border-[#FFE4EC] mt-12">
-      <div className="max-w-5xl mx-auto px-4 py-10 text-center">
+      <div className="max-w-6xl mx-auto px-4 py-10 text-center">
+        <div className="flex justify-center mb-2">
+          <CuratorSeal size="sm" />
+        </div>
         <Logo size="md" />
         <p className="mt-3 text-sm text-[#8A6373] max-w-md mx-auto">
           Kumpulan barang pas di hati, pas di kantong — semua rekomendasi favorit
           dari Instagram, terkurasi jadi satu tempat.
         </p>
         <div className="flex items-center justify-center gap-4 mt-5">
-          <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#FF6FA5] shadow-sm hover:shadow-md transition-shadow">
+          <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram barangpas" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#FF6FA5] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
             <Instagram className="w-5 h-5" />
           </a>
-          <a href="https://wa.me" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#FF6FA5] shadow-sm hover:shadow-md transition-shadow">
+          <a href="https://wa.me" target="_blank" rel="noreferrer" aria-label="WhatsApp barangpas" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#FF6FA5] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
             <MessageCircle className="w-5 h-5" />
           </a>
         </div>

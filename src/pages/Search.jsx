@@ -38,7 +38,7 @@ export default function Search() {
     <div className="min-h-screen bg-[#FFFAFC]">
       <title>{`Cari "${q}" — barangpas`}</title>
       <Header />
-      <main className="max-w-5xl mx-auto px-4 py-6">
+      <main className="max-w-6xl mx-auto px-4 py-6">
         <h1 className="font-heading text-xl sm:text-2xl text-[#2D2D2D] mb-4">
           Hasil untuk “{q}”
         </h1>

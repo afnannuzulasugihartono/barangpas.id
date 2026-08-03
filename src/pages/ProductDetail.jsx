@@ -86,7 +86,7 @@ export default function ProductDetail() {
   const pageUrl = typeof window !== 'undefined' ? window.location.href : `https://barangpas.id/produk/${product.id}`;
 
   return (
-    <div className="min-h-screen bg-[#FFFAFC] pb-28">
+    <div className="min-h-screen bg-[#FFFAFC] pb-28 md:pb-0">
       <title>{`${product.name} — barangpas`}</title>
       <meta name="description" content={product.description || `Beli ${product.name} sekarang di ${platform.label} lewat barangpas`} />
       <meta property="og:type" content="product" />
@@ -96,47 +96,63 @@ export default function ProductDetail() {
       <meta property="og:url" content={pageUrl} />
       <meta name="twitter:card" content="summary_large_image" />
       <Header />
-      <main className="max-w-2xl mx-auto px-4 py-4">
-        <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-sm text-[#8A6373] font-medium mb-4">
+      <main className="max-w-5xl mx-auto px-4 py-4 md:py-8">
+        <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-sm text-[#8A6373] hover:text-[#FF6FA5] font-medium mb-4 transition-colors">
           <ChevronLeft className="w-4 h-4" /> Kembali
         </button>
 
-        <div className="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_rgba(255,150,180,0.18)] border border-[#FFEDF3]">
-          <div className="relative aspect-square bg-[#FFF3F7]">
-            <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
-            <button
-              onClick={handleShare}
-              className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 flex items-center justify-center shadow-sm"
-              aria-label="Bagikan"
-            >
-              <Share2 className="w-4 h-4 text-[#FF6FA5]" />
-            </button>
-            <span
-              className="absolute bottom-3 left-3 text-xs font-bold px-3 py-1 rounded-full shadow-sm"
-              style={{ backgroundColor: platform.bg, color: platform.color }}
-            >
-              Tersedia di {platform.label}
-            </span>
+        <div className="md:grid md:grid-cols-2 md:gap-8 md:items-start">
+          {/* Image */}
+          <div className="bg-white rounded-3xl overflow-hidden shadow-[0_4px_20px_rgba(255,150,180,0.18)] border border-[#FFEDF3] md:sticky md:top-24">
+            <div className="relative aspect-square bg-[#FFF3F7]">
+              <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+              <button
+                onClick={handleShare}
+                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 flex items-center justify-center shadow-sm hover:bg-white transition-colors"
+                aria-label="Bagikan"
+              >
+                <Share2 className="w-4 h-4 text-[#FF6FA5]" />
+              </button>
+              <span
+                className="absolute bottom-3 left-3 text-xs font-bold px-3 py-1 rounded-full shadow-sm"
+                style={{ backgroundColor: platform.bg, color: platform.color }}
+              >
+                Tersedia di {platform.label}
+              </span>
+            </div>
           </div>
 
-          <div className="p-5">
-            <span className="text-[11px] font-semibold text-[#FF6FA5] bg-[#FFE4EC] px-2.5 py-1 rounded-full uppercase tracking-wide">
-              {product.category}
-            </span>
-            <h1 className="font-heading text-2xl text-[#2D2D2D] mt-3 leading-snug">{product.name}</h1>
-            <p className="font-heading text-3xl text-[#FF6FA5] mt-2">{formatRupiah(product.price)}</p>
-            <p className="text-sm text-[#6B5560] leading-relaxed mt-4 whitespace-pre-line">
-              {product.description}
-            </p>
+          {/* Info */}
+          <div className="mt-4 md:mt-0">
+            <div className="bg-white rounded-3xl border border-[#FFEDF3] p-5">
+              <span className="text-[11px] font-semibold text-[#FF6FA5] bg-[#FFE4EC] px-2.5 py-1 rounded-full uppercase tracking-wide">
+                {product.category}
+              </span>
+              <h1 className="font-heading text-2xl md:text-3xl text-[#2D2D2D] mt-3 leading-snug">{product.name}</h1>
+              <p className="font-heading text-3xl text-[#FF6FA5] mt-2">{formatRupiah(product.price)}</p>
+              <p className="text-sm text-[#6B5560] leading-relaxed mt-4 whitespace-pre-line">
+                {product.description}
+              </p>
+
+              <button
+                onClick={handleBuy}
+                disabled={redirecting}
+                className="hidden md:flex w-full mt-6 bg-[#FF6FA5] hover:bg-[#FF4F91] disabled:opacity-70 text-white font-heading text-lg py-3.5 rounded-full shadow-[0_6px_20px_rgba(255,111,165,0.4)] items-center justify-center gap-2 transition-colors"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                {redirecting ? 'Mengalihkan...' : 'Beli Sekarang'}
+              </button>
+            </div>
+
+            <Link to={`/kategori/${product.category}`} className="block text-center text-xs text-[#FF6FA5] font-semibold mt-4 hover:underline">
+              Lihat produk {product.category} lainnya →
+            </Link>
           </div>
         </div>
-
-        <Link to={`/kategori/${product.category}`} className="block text-center text-xs text-[#FF6FA5] font-semibold mt-4">
-          Lihat produk {product.category} lainnya →
-        </Link>
       </main>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-[#FFE4EC] p-4">
+      {/* Mobile fixed CTA */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-[#FFE4EC] p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] md:hidden">
         <div className="max-w-2xl mx-auto">
           <button
             onClick={handleBuy}

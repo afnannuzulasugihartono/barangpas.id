@@ -3,11 +3,12 @@ import { formatRupiah, platformInfo } from '../lib/format';
 
 export default function ProductCard({ product }) {
   const platform = platformInfo(product.affiliate_platform);
+  const categoryLabel = product.category ? product.category.replace(/-/g, ' ') : '';
 
   return (
     <Link
       to={`/produk/${product.id}`}
-      className="group bg-white rounded-3xl overflow-hidden shadow-[0_2px_12px_rgba(255,150,180,0.15)] hover:shadow-[0_8px_24px_rgba(255,150,180,0.28)] transition-all duration-300 hover:-translate-y-1 border border-[#FFEDF3] flex flex-col"
+      className="group bg-white rounded-3xl overflow-hidden shadow-[0_2px_12px_rgba(255,150,180,0.15)] hover:shadow-[0_8px_24px_rgba(255,150,180,0.28)] transition-all duration-300 hover:-translate-y-1 border border-[#FFEDF3] flex flex-col focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#FFD1E3]"
     >
       <div className="relative aspect-square overflow-hidden bg-[#FFF3F7]">
         <img
@@ -29,6 +30,9 @@ export default function ProductCard({ product }) {
         </span>
       </div>
       <div className="p-3 flex flex-col gap-1 flex-1">
+        {categoryLabel && (
+          <span className="text-[10px] font-semibold text-[#D89AB0] uppercase tracking-wide">{categoryLabel}</span>
+        )}
         <h3 className="text-sm font-semibold text-[#2D2D2D] line-clamp-2 leading-snug">{product.name}</h3>
         <p className="text-[#FF6FA5] font-heading text-lg mt-auto">{formatRupiah(product.price)}</p>
       </div>

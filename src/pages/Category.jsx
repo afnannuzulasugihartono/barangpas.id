@@ -6,6 +6,7 @@ import CategoryPills from '../components/CategoryPills';
 import ProductGrid from '../components/ProductGrid';
 import Loading from '../components/Loading';
 import ErrorState from '../components/ErrorState';
+import CategoryIcon from '../lib/icons';
 
 export default function Category() {
   const { slug } = useParams();
@@ -40,9 +41,14 @@ export default function Category() {
     <div className="min-h-screen bg-[#FFFAFC]">
       <title>{current ? `${current.name} — barangpas` : 'Kategori — barangpas'}</title>
       <Header />
-      <main className="max-w-5xl mx-auto px-4 py-6">
+      <main className="max-w-6xl mx-auto px-4 py-6">
         <h1 className="font-heading text-2xl sm:text-3xl text-[#2D2D2D] mb-4 flex items-center gap-2">
-          {current ? (<><span>{current.icon}</span> {current.name}</>) : 'Kategori'}
+          {current ? (
+            <>
+              <span className="text-[#FF6FA5]"><CategoryIcon name={current.icon} className="w-7 h-7" /></span>
+              {current.name}
+            </>
+          ) : 'Kategori'}
         </h1>
         <div className="mb-6">
           {!loading && <CategoryPills categories={categories} />}
