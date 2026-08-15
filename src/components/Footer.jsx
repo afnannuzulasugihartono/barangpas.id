@@ -25,7 +25,13 @@ export default function Footer() {
         <p className="mt-6 text-[11px] text-[#C79BAC]">
           © {new Date().getFullYear()} barangpas.id — Link afiliasi ini dapat menghasilkan komisi untuk kami tanpa biaya tambahan bagi Anda.
         </p>
-        <a href="/admin/login" className="inline-block mt-3 text-[11px] text-[#D89AB0] hover:text-[#FF6FA5] underline">Admin</a>
+        <div className="mt-3 flex items-center justify-center gap-3 text-[11px] text-[#D89AB0]">
+          <a href="/terms" className="hover:text-[#FF6FA5] underline">Syarat & Ketentuan</a>
+          <span>·</span>
+          <a href="/privacy" className="hover:text-[#FF6FA5] underline">Kebijakan Privasi</a>
+          <span>·</span>
+          <a href="/admin/login" className="hover:text-[#FF6FA5] underline">Admin</a>
+        </div>
       </div>
     </footer>
   );

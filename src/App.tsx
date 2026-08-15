@@ -8,6 +8,8 @@ import Search from './pages/Search';
 import ProductDetail from './pages/ProductDetail';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/kategori/:slug" element={<Category />} />
             <Route path="/cari" element={<Search />} />
             <Route path="/produk/:id" element={<ProductDetail />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route
               path="/admin"
