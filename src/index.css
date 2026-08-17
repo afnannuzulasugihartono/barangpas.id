@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --font-heading: 'Baloo 2', 'Fredoka', system-ui, sans-serif;
-  --font-body: 'Nunito', system-ui, sans-serif;
+  --font-heading: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 @font-face {
-  font-family: 'Baloo 2';
-  src: local('Baloo 2');
+  font-family: 'Inter';
+  src: local('Inter');
 }
 
 html {
@@ -17,13 +17,13 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: #FFFAFC;
-  color: #2D2D2D;
+  background-color: #FAFAF9;
+  color: #18181B;
 }
 
 ::selection {
-  background-color: #FFD1E3;
-  color: #2D2D2D;
+  background-color: #FBCFE8;
+  color: #18181B;
 }
 
 a:focus-visible,
@@ -31,17 +31,13 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid #FF6FA5;
+  outline: 2px solid #EC4899;
   outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -51,16 +47,11 @@ select:focus-visible {
 
 .font-heading {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 800;
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 .line-clamp-2 {
   display: -webkit-box;
