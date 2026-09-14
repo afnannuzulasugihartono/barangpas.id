@@ -1,0 +1,46 @@
+name: Expand XTRA HANTU source
+
+on:
+  push:
+    branches:
+      - xtra-hantu-mvp
+    paths:
+      - .github/workflows/expand-xtra-hantu.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout staging branch
+        uses: actions/checkout@v4
+        with:
+          ref: xtra-hantu-mvp
+          fetch-depth: 0
+
+      - name: Expand source bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf xtra-hantu-expanded /tmp/xtra-hantu-import
+          mkdir -p /tmp/xtra-hantu-import
+          unzip -q xtra-hantu/xtra-hantu.zip -d /tmp/xtra-hantu-import
+          cp -a /tmp/xtra-hantu-import/xtra-hantu xtra-hantu-expanded
+          find xtra-hantu-expanded -type f | sort
+
+      - name: Commit expanded source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add xtra-hantu-expanded
+          if git diff --cached --quiet; then
+            echo "Expanded source already matches bundle."
+            exit 0
+          fi
+          git commit -m "chore: expand XTRA HANTU source bundle"
+          git push origin HEAD:xtra-hantu-mvp
